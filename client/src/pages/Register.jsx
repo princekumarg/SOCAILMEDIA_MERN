@@ -41,14 +41,14 @@ const Register = () => {
                 <form action="" className='py-8 flex flex-col gap-5' onSubmit={handleSubmit(onSubmit)}>
                   <div className='w-full flex flex-col lg:flex-row gap-1 md:gap-2'>
                     <TextInput 
-                        name="firstName" type="firstName" label="F irstName" placeholder="First Name"
+                        name="firstName" type="text" label="F irstName" placeholder="First Name"
                         register={register("firstName",{required: 'firstName is required'})}
                         styles="w-full"
                         labelStyles="ml-2"
                         error={errors.firstName?errors.firstName.message:""}
                     />
                     <TextInput 
-                        name="lastName" type="lastName" label="Last Name" placeholder="Last Name"
+                        name="lastName" type="text" label="Last Name" placeholder="Last Name"
                         register={register("lastName",{required: 'lastName is required'})}
                         styles="w-full"
                         labelStyles="ml-2"
