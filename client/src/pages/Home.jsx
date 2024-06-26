@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import { useSelector } from 'react-redux'
-import { TopBar,ProfileCard,FriendsCard, CustomButton, TextInput, Loading,PostCard } from '../components'
+import { TopBar,ProfileCard,FriendsCard, CustomButton, TextInput, Loading,PostCard, EditProfile } from '../components'
 import { Link } from 'react-router-dom'
 import { suggest,requests,posts } from '../assets/data'
 import { NoProfile } from '../assets'
@@ -8,7 +8,7 @@ import { BsFiletypeGif, BsPersonFillAdd } from 'react-icons/bs'
 import { BiImages, BiSolidVideo } from 'react-icons/bi'
 import { useForm } from 'react-hook-form'
 const Home = () => {
-  const {user} = useSelector((state) => state.user);
+  const {user,edit} = useSelector((state) => state.user);
   const [friendRequest, setFriendRequest] = useState(requests);
   const [suggestedFriends, setSuggestedFriends] = useState(suggest);
   const [errMsg,setErrMsg]=useState("");
@@ -22,6 +22,7 @@ const Home = () => {
   }=useForm();
   const handlePostSubmit=async(data)=>{}
   return (
+    <>
     <div className='home w-full px-0 lg:px-10 pb-20 2xl:px-40 bg-bgColor
                     lg:rounded-lg h-screen overflow-hidden'>
                       <TopBar />
@@ -32,7 +33,7 @@ const Home = () => {
                 <FriendsCard friends={user?.friends}/>
               </div>
               {/*CENTER*/}
-              <div className='flex-1 h-full bg-primary px-4 flex flex-col gap-6
+              <div className='flex-1 h-fulls px-4 flex flex-col gap-6
                     overflow-y-auto rounded-lg'>
                 <form action="" className='bg-primary px-4 rounded-lg'
                       onSubmit={handleSubmit(handlePostSubmit)}>
@@ -185,6 +186,8 @@ const Home = () => {
               
           </div>
     </div>
+      {edit && <EditProfile/>}
+    </>
     
   )
 }
